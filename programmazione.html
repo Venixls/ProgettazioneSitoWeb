@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>r/programmazione - MiniReddit</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="bg-overlay"></div>
+  <header>
+    <div class="header-inner">
+    <a href="index.html" class="logo-area">
+      <div class="logo-icon">r/</div>
+      <span>MiniReddit</span>
+    </a>
+    <div class="search-wrapper" id="search-container">
+      <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24"><path d="M9.5 3a6.5 6.5 0 0 1 5.25 10.35l4.7 4.7-1.42 1.42-4.7-4.7A6.5 6.5 0 1 1 9.5 3m0 2a4.5 4.5 0 1 0 0 9 4.5 4.5 0 0 0 0-9Z"/></svg>
+      <input type="text" id="search-box" class="search-input" placeholder="Cerca discussioni o canali...">
+    </div>
+    <div class="nav-actions">
+      <button id="open-bg-modal" class="btn">🖼️ Cambia Sfondo</button>
+      <button id="open-post-modal" class="btn btn-primary">➕ Nuovo Post</button>
+      <a href="login.html" class="btn btn-login">👤 Login</a>
+    </div>
+    </div>
+  </header>
+  <div class="container">
+    <aside class="sidebar"><div class="card"><div class="card-title">Canali & Comunità</div><div class="channel-btn-list"><a href="index.html" class="channel-btn"><span class="ch-dot" style="background:#ff4500;"></span> 🏠 Home Feed</a><a href="tecnologia.html" class="channel-btn"><span class="ch-dot" style="background:#0079d3;"></span> r/tecnologia</a><a href="programmazione.html" class="channel-btn active"><span class="ch-dot" style="background:#10b981;"></span> r/programmazione</a><a href="gaming.html" class="channel-btn"><span class="ch-dot" style="background:#ec4899;"></span> r/gaming</a><a href="domande.html" class="channel-btn"><span class="ch-dot" style="background:#f59e0b;"></span> r/domande</a><a href="scienza.html" class="channel-btn"><span class="ch-dot" style="background:#8b5cf6;"></span> r/scienza</a></div></div></aside>
+    <main class="feed"><div class="channel-hero">
+        <div class="channel-hero-banner" style="
+            background-image: url('programmazione.jpg'); 
+            background-size: cover; 
+            background-position: center; 
+            background-repeat: no-repeat;
+            position: relative;
+        ">
+            <div style="position: absolute; inset: 0; background: rgba(0,0,0,0.4);"></div>
+        </div>
+        <div class="channel-hero-content" style="position: relative; z-index: 2;">
+          <div class="channel-hero-info">
+            <div class="channel-hero-icon" style="background: #10b981;">⚡</div>
+            <div>
+              <h1 style="font-size: 1.4rem; font-weight: 800;">r/programmazione</h1>
+              <p style="color: var(--text-muted); font-size: 0.88rem;">Sviluppo web, algoritmi, codice, bug fixing e architettura software.</p>
+            </div>
+          </div>
+          <button class="btn btn-primary" onclick="this.textContent = (this.textContent === 'Iscritto' ? '+ Unisciti' : 'Iscritto')">+ Unisciti</button>
+        </div>
+      </div>
+
+    </main>
+    <aside class="right-bar">
+      <div class="card">
+        <div class="card-title">Informazioni Canale</div>
+        <div style="display: flex; gap: 16px; margin-bottom: 12px;">
+          <div>
+            <div style="font-weight: 700; font-size: 1.1rem;">89.2k</div>
+            <div style="font-size: 0.8rem; color: var(--text-muted);">Membri</div>
+          </div>
+          <div>
+            <div style="font-weight: 700; font-size: 1.1rem; color: #10b981;">Online</div>
+            <div style="font-size: 0.8rem; color: var(--text-muted);">Adesso</div>
+          </div>
+        </div>
+        <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.5;">
+          Pagina dedicata: <code>programmazione.html</code>
+        </p>
+      </div>
+      <div class="card">
+        <div class="card-title">Regole Generali</div>
+        <ol style="padding-left: 18px; color: var(--text-muted); font-size: 0.85rem; line-height: 1.6;">
+          <li>Rispetta gli altri membri</li>
+          <li>Rimani nel tema del canale</li>
+          <li>Nessuno spam o autopromozione</li>
+        </ol>
+      </div>
+    </aside>
+  </div>
+
+  <!-- Modale Nuovo Post -->
+  <div class="modal-overlay" id="post-modal">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3>Crea un Nuovo Post</h3>
+        <button class="close-btn" id="close-post-modal">&times;</button>
+      </div>
+      <form id="create-post-form" class="login-form" style="display: flex;">
+        <div class="form-group">
+          <label for="post-channel-select">Seleziona Canale</label>
+          <select id="post-channel-select" style="background:#161b22; color:#fff; padding:10px 14px; border-radius:10px; border:1px solid var(--surface-border); font-size:0.95rem; outline:none;">
+            <option value="tecnologia">r/tecnologia</option>
+            <option value="programmazione">r/programmazione</option>
+            <option value="gaming">r/gaming</option>
+            <option value="domande">r/domande</option>
+            <option value="scienza">r/scienza</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="post-title-input">Titolo</label>
+          <input type="text" id="post-title-input" placeholder="Titolo accattivante..." required>
+        </div>
+        <div class="form-group">
+          <label for="post-content-input">Contenuto</label>
+          <textarea id="post-content-input" rows="4" placeholder="Di cosa vorresti parlare?" style="background:rgba(255,255,255,0.06); border:1px solid var(--surface-border); color:#fff; padding:10px 14px; border-radius:10px; font-size:0.95rem; outline:none; resize:vertical;" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary btn-full">Pubblica Post</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="bg-modal">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3>Personalizza lo Sfondo</h3>
+        <button class="close-btn" id="close-bg-modal">&times;</button>
+      </div>
+      <p style="color: var(--text-muted); font-size: 0.88rem;">Carica un'immagine, regola sfocatura e opacità in anteprima e clicca su <strong>"Applica Sfondo"</strong> per confermare.</p>
+      <label class="file-dropzone" for="bg-file-input">
+        <div style="font-size: 2rem; margin-bottom: 4px;">📁</div>
+        <div style="font-weight: 600; font-size: 0.92rem;">Scegli un'immagine dal dispositivo</div>
+        <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 2px;">PNG, JPG, WebP</div>
+        <input type="file" id="bg-file-input" accept="image/png, image/jpeg, image/webp" style="display: none;">
+      </label>
+      <div class="preview-container" id="bg-preview-box">
+        <div class="preview-header">
+          <span>Anteprima con filtri in tempo reale:</span>
+          <span id="preview-file-name" style="font-weight: 600; color: #fff;"></span>
+        </div>
+        <div class="preview-img-wrapper">
+          <img id="bg-preview-img" src="" alt="Anteprima sfondo">
+          <div class="preview-overlay-layer" id="bg-preview-overlay"></div>
+        </div>
+        <div class="controls-group">
+          <div class="control-row">
+            <label class="toggle-switch">
+              <input type="checkbox" id="blur-toggle" checked>
+              <span>Attiva Sfocatura</span>
+            </label>
+            <div class="control-slider-wrap">
+              <input type="range" id="blur-slider" class="control-slider" min="1" max="25" value="8">
+              <span class="control-value" id="blur-val-display">8px</span>
+            </div>
+          </div>
+          <div class="control-row">
+            <span class="control-label">Opacità Overlay:</span>
+            <div class="control-slider-wrap">
+              <input type="range" id="opacity-slider" class="control-slider" min="20" max="95" value="70">
+              <span class="control-value" id="opacity-val-display">70%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-actions">
+        <button id="reset-bg-btn" class="btn btn-danger">Rimuovi Sfondo</button>
+        <div class="modal-right-actions">
+          <button class="btn" onclick="document.getElementById('close-bg-modal').click()">Annulla</button>
+          <button id="apply-bg-btn" class="btn btn-primary" disabled>Applica Sfondo</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+{
+    "users": [
+        {
+            "id": 1,
+            "username": "marco_dev",
+            "email": "marco@example.com",
+            "password": "password123"
+        },
+        {
+            "id": 1794856333,
+            "username": "prova",
+            "email": "alex@gmail.com",
+            "password": "123456"
+        }
+    ],
+    "posts": [
+        {
+            "id": 1794856355,
+            "channel": "programmazione",
+            "author": "u\/prova",
+            "title": "che vuoi",
+            "content": "prova",
+            "votes": 1,
+            "comments": 0,
+            "time": "Proprio ora"
+        },
+        {
+            "id": 1,
+            "channel": "tecnologia",
+            "author": "u\/marco_dev",
+            "title": "I nuovi modelli multimodali locali stanno cambiando lo sviluppo su notebook",
+            "content": "Con le nuove ottimizzazioni nei pesi quantizzati è possibile far girare modelli con reasoning e visione direttamente sul portatile senza connessione internet. I tempi di risposta sono eccellenti e la privacy è garantita al 100%.",
+            "votes": 342,
+            "comments": 48,
+            "time": "2 ore fa"
+        },
+        {
+            "id": 2,
+            "channel": "programmazione",
+            "author": "u\/cleanCoder",
+            "title": "Guida rapida: Passare a un'architettura modulare con pagine HTML statiche interconnesse",
+            "content": "A volte la semplicità vince su framework complessi: dividere il sito in pagine statiche (es. tecnologia.html, gaming.html) collegate da pulsanti veloci riduce il carico ed elimina la fragilità di router monolitici.",
+            "votes": 519,
+            "comments": 73,
+            "time": "4 ore fa"
+        }
+    ]
+}
